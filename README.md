@@ -83,21 +83,17 @@ local servers = {
     <summary>Python</summary>
 
 There are multiple language servers available for Python such as pyright,
-python-lsp-server, etc. Pylyzer is a recent one developed in Rust which makes
-it fast and efficient.
+python-lsp-server, pylyzer, etc. As of 2023-09-16, pyright is the only one to
+provide easy local package resolution.
 
-Install the **pylyzer** language server for Python by downloading a pre-built
-binary from its
-[GitHub repository](https://github.com/mtshiba/pylyzer/releases).
+Install the **pyright** language server for Python.
 
 ```bash
-curl -JOL https://github.com/mtshiba/pylyzer/releases/download/v0.0.45/pylyzer-x86_64-unknown-linux-gnu.tar.gz
-tar zxvf pylyzer-x86_64-unknown-linux-gnu.tar.gz
-sudo cp pylyzer /usr/local/bin/
+pip install --user pyright
 ```
 
-As pylyzer does not provide linting, a linter is needed as a complement. Ruff
-is a Python linter also developed in Rust.
+Pyright provides static type analysis only. For linting, a linter is needed as
+a complement. Ruff is a fast and efficient Python linter developed in Rust.
 
 Install the **ruff** linter by downloading a pre-built binary from its [GitHub
 repositoy](https://github.com/astral-sh/ruff/releases).
@@ -108,7 +104,7 @@ tar zxvf ruff-x86_64-unknown-linux-gnu.tar.gz
 sudo cp ruff /usr/local/bin/
 ```
 
-Install the **ruff-lsp** package to use Ruff.
+In order to use Ruff inside neovim, install the **ruff-lsp** language server.
 
 ```bash
 pip install --user ruff-lsp
@@ -120,7 +116,7 @@ the `servers` list.
 ```lua
 local servers = {
   ...
-  'pylyzer',
+  'pyright',
   'ruff_lsp',
 }
 ```
