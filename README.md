@@ -108,6 +108,12 @@ tar zxvf ruff-x86_64-unknown-linux-gnu.tar.gz
 sudo cp ruff /usr/local/bin/
 ```
 
+Install the **ruff-lsp** package to use Ruff.
+
+```bash
+pip install --user ruff-lsp
+```
+
 Edit `~/.config/nvim/lua/lsp/lspconfig.lua` and add the following entries to
 the `servers` list.
 
