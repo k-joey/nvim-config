@@ -76,6 +76,11 @@ else
   set.smartindent = true          -- Adopt indentation of the current file
   set.number = true               -- Show line numbers
   set.cc = "80"                   -- Show ruler
+  set.completeopt = {             -- Show completion popup
+    'menu',
+    'menuone',
+    'noselect'
+  }
 
   -- Imports
   --require('core/autocmds')
