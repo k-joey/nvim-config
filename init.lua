@@ -26,6 +26,9 @@ else
   Plug 'L3MON4D3/LuaSnip'
   Plug 'saadparwaiz1/cmp_luasnip'
 
+  -- Function signature help
+  Plug 'ray-x/lsp_signature.nvim'
+
   -- File explorer
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'nvim-tree/nvim-tree.lua'

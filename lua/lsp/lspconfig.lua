@@ -18,6 +18,11 @@ if not cmp_status_ok then
   return
 end
 
+local signature_ok, lsp_signature = pcall(require, 'lsp_signature')
+if not signature_ok then
+  return
+end
+
 -- Add additional capabilities supported by nvim-cmp
 -- See: https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -66,6 +71,9 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+  -- Attach function signature help.
+  lsp_signature.on_attach({}, bufnr)
 end
 
 -- Diagnostic settings:
