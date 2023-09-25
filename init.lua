@@ -97,11 +97,12 @@ else
   --require('lsp/prolog')
   --require('plugins/mason')
   --require('plugins/nvim-cmp')
+  --require('plugins/barbar')
   --require('plugins/nvim-tree')
   --require('plugins/indent-blankline')
   --require('plugins/gitsigns')
   --require('plugins/nvim-treesitter')
-  --require('plugins/barbar')
   --require('plugins/persistence')
+  --require('plugins/nvim-autopairs')
 end
 
