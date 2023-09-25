@@ -129,14 +129,41 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
-local servers = {}
+local servers = {
+  "lua_ls",
+  "bashls",
+  "html",
+  "cssls",
+  "tailwindcss",
+  "svelte",
+  "tsserver",
+  "eslint",
+  "ruff_lsp",
+  "pyright",
+}
 
--- Call setup
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+  -- Generic options for language server.
+  local opts = {
     on_attach = on_attach,
     root_dir = root_dir,
     capabilities = capabilities,
   }
+
+  -- Custom options for Swift.
+  -- We use the sourcekit-lsp binary from the Xcode toolchain, not the one in
+  -- `/usr/bin`.
+  if lsp == "sourcekit" then
+    opts.root_dir = function ()
+      return vim.fs.dirname(
+        vim.fs.find({"Package.swift", ".git"}, {upward = true})[1]
+      )
+    end
+
+    opts.cmd = {"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"}
+  end
+
+  -- Setup language server.
+  lspconfig[lsp].setup(opts)
 end
 
