@@ -137,10 +137,6 @@ for _, lsp in ipairs(servers) do
     on_attach = on_attach,
     root_dir = root_dir,
     capabilities = capabilities,
-    flags = {
-      -- default in neovim 0.7+
-      debounce_text_changes = 150,
-    }
   }
 end
 
