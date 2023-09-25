@@ -140,6 +140,7 @@ local servers = {
   "eslint",
   "ruff_lsp",
   "pyright",
+  "sourcekit",
 }
 
 for _, lsp in ipairs(servers) do
