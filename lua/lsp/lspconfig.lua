@@ -164,6 +164,17 @@ for _, lsp in ipairs(servers) do
     opts.cmd = {"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"}
   end
 
+  -- Custom options for Python.
+  if lsp == "pyright" then
+    opts.root_dir = function ()
+      return vim.fs.dirname(
+        vim.fs.find({
+          "requirements.txt", "pyrightconfig.json", ".venv", ".git"
+        }, {upward = true})[1]
+      )
+    end
+  end
+
   -- Setup language server.
   lspconfig[lsp].setup(opts)
 end
